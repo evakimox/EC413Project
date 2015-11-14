@@ -27,7 +27,7 @@ module Controller(clock,reset,Instruction_ctrlIn,
 					MemtoReg_ctrl,
 					IRWrite_ctrl,
 					BEQ_ctrl,
-					ALUSrcA_crtl,
+					ALUSrcA_ctrl,
 					RegWrite_ctrl,
 					RegDst_ctrl,
 					PCSrc_ctrl,
@@ -45,7 +45,7 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	output MemtoReg_ctrl;
 	output IRWrite_ctrl;
 	output BEQ_ctrl;
-	output ALUSrcA_crtl;
+	output ALUSrcA_ctrl;
 	output RegWrite_ctrl;
 	output RegDst_ctrl;
 	output [1:0]PCSrc_ctrl;
@@ -60,7 +60,7 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	reg MemtoReg_ctrl;
 	reg IRWrite_ctrl;
 	reg BEQ_ctrl;
-	reg ALUSrcA_crtl;
+	reg ALUSrcA_ctrl;
 	reg RegWrite_ctrl;
 	reg RegDst_ctrl;
 	reg [1:0]PCSrc_ctrl;
@@ -78,66 +78,99 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	
 	
 	//use If else statement to build output
-	always @ (posedge clk)
+	always @ (posedge clock)
 	state <= next_state;
 	
 	always @(state)
 	begin
 		if(state==4'd0) begin
 		//output assignments
-		//PCWriteCond_ctrl=0;
+		PCWriteCond_ctrl=0;
 		PCWrite_ctrl=1;
 		IorD_ctrl=0;
 		MemRead_ctrl=1;
-		//MemWrite_ctrl=0;
-		//MemtoReg_ctrl=0;
+		MemWrite_ctrl=0;
+		MemtoReg_ctrl=0;
 		IRWrite_ctrl=1;
-		//BEQ_ctrl=1;
+		BEQ_ctrl=1;
 		ALUSrcA_ctrl=0;
-		//RegWrite_ctrl=0;
-		//RegDst_ctrl=0;
+		RegWrite_ctrl=0;
+		RegDst_ctrl=0;
 		PCSrc_ctrl=2'b00;
 		ALUOP_ctrl=2'b00;
 		ALUSrcB_ctrl=2'b01;
 		end
 		if(state==4'd1) begin
 		//I think the follwing is just add whatever needed(new) and changed
+		ALUSrcA_ctrl = 0;
+		ALUOP_ctrl = 2'b00;
+		ALUSrcB_ctrl = 2'b11;
 		end
 		if(state==4'd2) begin
 		//out assignments
+		ALUSrcA_ctrl = 1;
+		ALUOP_ctrl = 2'b10;
+		ALUSrcB_ctrl = 2'b00;
 		end
 		if(state==4'd3) begin
 		//assignments
+		MemtoReg_ctrl=0;
+		RegWrite_ctrl=1;
+		RegDst_ctrl=1;
 		end
 		if(state==4'd4) begin
 		//assignments
+		BEQ_ctrl=1;
 		end
 		if(state==4'd5) begin
 		//assignments
+		PCWriteCond_ctrl=1;
+		ALUSrcA_ctrl=1;
+		PCSrc_ctrl = 2'b01;
+		ALUOP_ctrl = 2'b01;
+		ALUSrcB_ctrl = 2'b00;
 		end
 		if(state==4'd6) begin
 		//assignments
+		BEQ_ctrl=0;
 		end
 		if(state==4'd7) begin
 		//assignments
+		ALUSrcA_ctrl=1;
+		ALUOP_ctrl=2'b10;
+		ALUSrcB_ctrl=2'b10;
 		end
 		if(state==4'd8) begin
 		//assignments
+		MemtoReg_ctrl=0;
+		RegWrite_ctrl = 1;
+		RegDst_ctrl=0;
 		end
 		if(state==4'd9) begin
 		//assignments
+		ALUSrcA_ctrl=1;
+		ALUSrcB_ctrl=2'b10;
 		end
 		if(state==4'd10) begin
 		//assignments
+		IorD_ctrl=1;
+		MemRead_ctrl = 1;
 		end
 		if(state==4'd11) begin
 		//assignments
+		MemtoReg_ctrl=1;
+		RegWrite_ctrl=1;
+		RegDst_ctrl=0;
 		end
 		if(state==4'd12) begin
 		//assignments
+		IorD_ctrl=1;
+		MemWrite_ctrl=1;
 		end
 		if(state==4'd13) begin
 		//output assignments
+		PCWrite_ctrl=1;
+		PCSrc_ctrl =2'b10;
 		end
 	end
 	
@@ -147,22 +180,49 @@ module Controller(clock,reset,Instruction_ctrlIn,
 			next_state=0;
 		else
 			case(state)
-				4'd0: next_state = 4'h1;
-				4'd1: if(Instruction_ctrlIn==6'b010101)
-							next_state = 4'ha;
-						else
-							next_state = 4'hb;
-				4'd3: next_state = 4'hf;
-				4'd4: next_state = 4'hf;
-				4'd5: next_state = 4'hf;
-				4'd6: next_state = 4'hf;
-				4'd7: next_state = 4'hf;
-				4'd8: next_state = 4'hf;
-				4'd9: next_state = 4'hf;
-				4'ha: next_state = 4'hf;
-				4'hb: next_state = 4'hf;
-				4'hc: next_state = 4'hf;
-				4'hd: next_state = 4'hf;
+				4'd0: if(Instruction_ctrlIn==6'b000000)
+							next_state = 4'h0;
+							else
+							next_state = 4'h1;
+				4'd1: if(Instruction_ctrlIn[5:4]==2'b01)//Arithmetic Rtype
+							next_state = 4'h2;
+							else
+						if(Instruction_ctrlIn==6'b100000)//BEQ
+							next_state = 4'h4;
+							else
+						if(Instruction_ctrlIn==6'b100001)//BNE
+							next_state = 4'h6;
+							else
+						if(Instruction_ctrlIn==6'b111001)//LI
+							next_state = 4'h8;
+							else
+						if(Instruction_ctrlIn[5:3]==3'b110)//Arithmetic I type
+							next_state = 4'h7;
+							else
+						if(Instruction_ctrlIn==6'b111011)//lwi
+							next_state = 4'h9;
+							else
+						if(Instruction_ctrlIn==6'b111100)//swi
+							next_state = 4'h9;
+							else
+						if(Instruction_ctrlIn==6'b000001)//jmp
+							next_state = 4'h13;
+				4'd2: next_state = 4'h3;
+				4'd3: next_state = 4'h0;
+				4'd4: next_state = 4'h5;
+				4'd5: next_state = 4'h0;
+				4'd6: next_state = 4'h5;
+				4'd7: next_state = 4'h8;
+				4'd8: next_state = 4'h0;
+				4'h9: if(Instruction_ctrlIn==6'b111011)//lwi
+							next_state = 4'h10;
+							else
+						if(Instruction_ctrlIn==6'b111100)//jmp
+							next_state = 4'h12;
+				4'ha: next_state = 4'hb;
+				4'hb: next_state = 4'hc;
+				4'hc: next_state = 4'h0;
+				4'hd: next_state = 4'h0;
 			endcase
 	end
 		
