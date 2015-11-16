@@ -71,48 +71,47 @@ module Controller_tb;
 		clock = 0;
 		reset = 1;
 		Instruction_ctrlIn = 0;
+		// Wait 50 time units to reset
 		#50 reset=0;
-		// Wait 100 ns for global reset to finish
+		// Cycle the instruction every 10 time units
 		#10
-		Instruction_ctrlIn = 6'b010000;		
+		Instruction_ctrlIn = 6'b010000;	//R-type: MOV	
 		#10
-		Instruction_ctrlIn = 6'b010001;
+		Instruction_ctrlIn = 6'b010001;	//R-type: NOT
 		#10
-		Instruction_ctrlIn = 6'b010010;
+		Instruction_ctrlIn = 6'b010010;	//R-type: ADD
 		#10
-		Instruction_ctrlIn = 6'b010011;
+		Instruction_ctrlIn = 6'b010011;	//R-type: SUB
 		#10
-		Instruction_ctrlIn = 6'b010100;
+		Instruction_ctrlIn = 6'b010100;	//R-type: OR
 		#10
-		Instruction_ctrlIn = 6'b010101;
+		Instruction_ctrlIn = 6'b010101;	//R-type: AND
 		#10
-		Instruction_ctrlIn = 6'b010111;
+		Instruction_ctrlIn = 6'b010111;	//R-type: SLT
 		#10
-		Instruction_ctrlIn = 6'b000001;
+		Instruction_ctrlIn = 6'b000001;	//Jump
 		#10
-		Instruction_ctrlIn = 6'b100000;
+		Instruction_ctrlIn = 6'b100000;	//BEQ
 		#10
-		Instruction_ctrlIn = 6'b100001;
+		Instruction_ctrlIn = 6'b100001;	//BNE
 		#10
-		Instruction_ctrlIn = 6'b110010;
+		Instruction_ctrlIn = 6'b110010;	//I-type: ADDI
 		#10
-		Instruction_ctrlIn = 6'b110011;
+		Instruction_ctrlIn = 6'b110011;	//I-type: SUBI
 		#10
-		Instruction_ctrlIn = 6'b110100;
+		Instruction_ctrlIn = 6'b110100;	//I-type: ORI
 		#10
-		Instruction_ctrlIn = 6'b110101;
+		Instruction_ctrlIn = 6'b110101;	//I-type: ANDI
 		#10
-		Instruction_ctrlIn = 6'b110111;
+		Instruction_ctrlIn = 6'b110111;	//I-type: SLTI
 		#10
-		Instruction_ctrlIn = 6'b111001;
+		Instruction_ctrlIn = 6'b111001;	//I-type: LI
 		#10
-		Instruction_ctrlIn = 6'b111011;
+		Instruction_ctrlIn = 6'b111011;	//I-type: LWI
 		#10
-		Instruction_ctrlIn = 6'b111100;
+		Instruction_ctrlIn = 6'b111100;	//I-type: SWI
 		#10
-		Instruction_ctrlIn = 6'b000000;
-        
-		// Add stimlus her
+		Instruction_ctrlIn = 6'b000000;	//NOOP
 
 	end
       
