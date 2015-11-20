@@ -8,7 +8,34 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Controller.v&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/Controller.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/DMem.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/Datapath.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/IMem.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/fourmux32.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/nbit_register_file.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/threemux32.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/twomux1.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/twomux32.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/twomux5.v&quot; into library work</arg>
 </msg>
 
 </messages>

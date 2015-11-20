@@ -36,7 +36,8 @@ module Controller(clock,reset,Instruction_ctrlIn,
 					);
 	input clock,reset;
 	input [5:0]Instruction_ctrlIn;
-					
+	
+	//Control line outputs				
 	output PCWriteCond_ctrl;
 	output PCWrite_ctrl;
 	output IorD_ctrl;
@@ -83,8 +84,8 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	
 	always @(state)
 	begin
-		if(state==4'd0) begin
-		//output assignments
+		if(state==4'd0) begin	//Instruction Fetch
+		//output assignments - initialize control lines
 		PCWriteCond_ctrl=0;
 		PCWrite_ctrl=1;
 		IorD_ctrl=0;
@@ -100,29 +101,30 @@ module Controller(clock,reset,Instruction_ctrlIn,
 		ALUOP_ctrl=2'b00;
 		ALUSrcB_ctrl=2'b01;
 		end
-		if(state==4'd1) begin
 		//I think the follwing is just add whatever needed(new) and changed
-		ALUSrcA_ctrl = 0;
-		ALUOP_ctrl = 2'b00;
-		ALUSrcB_ctrl = 2'b11;
+		// - change only control lines that are needed
+		if(state==4'd1) begin	//Instruction Decode/Register Fetch
+		ALUSrcA_ctrl = 0;	
+		ALUOP_ctrl = 2'b00;	
+		ALUSrcB_ctrl = 2'b11;	
 		end
-		if(state==4'd2) begin
-		//out assignments
-		ALUSrcA_ctrl = 1;
-		ALUOP_ctrl = 2'b10;
-		ALUSrcB_ctrl = 2'b00;
+		if(state==4'd2) begin	//R-type ALU operation
+		//out assignments	
+		ALUSrcA_ctrl = 1;	//Source A is Rs
+		ALUOP_ctrl = 2'b10;	
+		ALUSrcB_ctrl = 2'b00;	
 		end
-		if(state==4'd3) begin
+		if(state==4'd3) begin	//R-type ALUOut to Rd
 		//assignments
 		MemtoReg_ctrl=0;
 		RegWrite_ctrl=1;
 		RegDst_ctrl=1;
 		end
-		if(state==4'd4) begin
+		if(state==4'd4) begin	//BEQ comparison
 		//assignments
 		BEQ_ctrl=1;
 		end
-		if(state==4'd5) begin
+		if(state==4'd5) begin	//Write Branch target to PC
 		//assignments
 		PCWriteCond_ctrl=1;
 		ALUSrcA_ctrl=1;
@@ -130,44 +132,44 @@ module Controller(clock,reset,Instruction_ctrlIn,
 		ALUOP_ctrl = 2'b01;
 		ALUSrcB_ctrl = 2'b00;
 		end
-		if(state==4'd6) begin
+		if(state==4'd6) begin	//BNE comparison
 		//assignments
 		BEQ_ctrl=0;
 		end
-		if(state==4'd7) begin
+		if(state==4'd7) begin	//Immediate ALU operation
 		//assignments
 		ALUSrcA_ctrl=1;
 		ALUOP_ctrl=2'b10;
 		ALUSrcB_ctrl=2'b10;
 		end
-		if(state==4'd8) begin
+		if(state==4'd8) begin	//Immediate ALUOut to Rt
 		//assignments
 		MemtoReg_ctrl=0;
 		RegWrite_ctrl = 1;
 		RegDst_ctrl=0;
 		end
-		if(state==4'd9) begin
+		if(state==4'd9) begin	//Memory address computation for LWI and SWI
 		//assignments
 		ALUSrcA_ctrl=1;
 		ALUSrcB_ctrl=2'b10;
 		end
-		if(state==4'd10) begin
+		if(state==4'd10) begin	//Load to memory contents to MDR
 		//assignments
 		IorD_ctrl=1;
 		MemRead_ctrl = 1;
 		end
-		if(state==4'd11) begin
+		if(state==4'd11) begin	//Load MDR to Rt
 		//assignments
 		MemtoReg_ctrl=1;
 		RegWrite_ctrl=1;
 		RegDst_ctrl=0;
 		end
-		if(state==4'd12) begin
+		if(state==4'd12) begin	//Store to memory
 		//assignments
 		IorD_ctrl=1;
 		MemWrite_ctrl=1;
 		end
-		if(state==4'd13) begin
+		if(state==4'd13) begin	//Write Jump address to PC
 		//output assignments
 		PCWrite_ctrl=1;
 		PCSrc_ctrl =2'b10;
@@ -180,9 +182,9 @@ module Controller(clock,reset,Instruction_ctrlIn,
 			next_state=0;
 		else
 			case(state)
-				4'd0: if(Instruction_ctrlIn==6'b000000)
+				4'd0: if(Instruction_ctrlIn==6'b000000)//if NOOP - return to State 0
 							next_state = 4'h0;
-							else
+							else		//else - send to decode
 							next_state = 4'h1;
 				4'd1: if(Instruction_ctrlIn[5:4]==2'b01)//Arithmetic Rtype
 							next_state = 4'h2;

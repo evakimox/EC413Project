@@ -15,8 +15,8 @@ Compiling module Controller
 Compiling module Controller_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 3 Verilog Units
 Built simulation executable C:/Users/Jingning Zhang/Desktop/EC413Project/MulticycleCPU/Controller_tb_isim_beh.exe
-Fuse Memory Usage: 27316 KB
-Fuse CPU Usage: 436 ms
+Fuse Memory Usage: 27312 KB
+Fuse CPU Usage: 389 ms
