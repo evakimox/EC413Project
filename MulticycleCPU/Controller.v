@@ -50,7 +50,7 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	output RegWrite_ctrl;
 	output RegDst_ctrl;
 	output [1:0]PCSrc_ctrl;
-	output [1:0]ALUOP_ctrl;
+	output [3:0]ALUOP_ctrl;
 	output [1:0]ALUSrcB_ctrl;
 	
 	reg PCWriteCond_ctrl;
@@ -65,7 +65,7 @@ module Controller(clock,reset,Instruction_ctrlIn,
 	reg RegWrite_ctrl;
 	reg RegDst_ctrl;
 	reg [1:0]PCSrc_ctrl;
-	reg [1:0]ALUOP_ctrl;
+	reg [3:0]ALUOP_ctrl;
 	reg [1:0]ALUSrcB_ctrl;
 	
 	reg [3:0]state;
@@ -98,20 +98,20 @@ module Controller(clock,reset,Instruction_ctrlIn,
 		RegWrite_ctrl=0;
 		RegDst_ctrl=0;
 		PCSrc_ctrl=2'b00;
-		ALUOP_ctrl=2'b00;
+		ALUOP_ctrl=4'b00;
 		ALUSrcB_ctrl=2'b01;
 		end
 		//I think the follwing is just add whatever needed(new) and changed
 		// - change only control lines that are needed
 		if(state==4'd1) begin	//Instruction Decode/Register Fetch
 		ALUSrcA_ctrl = 0;	
-		ALUOP_ctrl = 2'b00;	
+		ALUOP_ctrl = 4'b0000;	
 		ALUSrcB_ctrl = 2'b11;	
 		end
 		if(state==4'd2) begin	//R-type ALU operation
 		//out assignments	
 		ALUSrcA_ctrl = 1;	//Source A is Rs
-		ALUOP_ctrl = 2'b10;	
+		ALUOP_ctrl = 4'b1000;	
 		ALUSrcB_ctrl = 2'b00;	
 		end
 		if(state==4'd3) begin	//R-type ALUOut to Rd
