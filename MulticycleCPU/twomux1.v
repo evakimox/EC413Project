@@ -22,11 +22,12 @@ module twomux1(In0,In1,Sel,Out);
 
 input In0,In1;
 input Sel;
-output Out;
+output reg Out;
 
-case(Sel)
-	1'b0: assign Out=In0;
-	1'b1: assign Out=In1;
-endcase
+
+always @(Sel,In1,In0)
+begin
+assign Out=(Sel==1)?In1:In0;	
+end
 
 endmodule

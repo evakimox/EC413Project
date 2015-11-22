@@ -24,10 +24,11 @@ module ALU(
 	 
 	 input [31:0]ALU_in_A,ALU_in_B;
 	 input [3:0]ALU_selection;
-	 output [31:0]ALUoutput;
-	 output Beq_alu;
+	 output reg [31:0]ALUoutput;
+	 output reg Beq_alu;
 	 
-	 
+always @ (ALU_selection,ALU_in_A,ALU_in_B)
+begin	 
 	 case(ALU_selection)
 		4'b0000: assign ALUoutput = ALU_in_A;
 		4'b0001: assign ALUoutput = ~ALU_in_A;
@@ -38,6 +39,7 @@ module ALU(
 		4'b0111: assign ALUoutput = (ALU_in_A<ALU_in_B)?1:0;
 		4'b1001: assign ALUoutput = ALU_in_B;	//B can be the immediate while A cannot
 	endcase
-	
+	assign Beq_alu = (ALU_in_A==ALU_in_B)?1:0;
+end
 
 endmodule

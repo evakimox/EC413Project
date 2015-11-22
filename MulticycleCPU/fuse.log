@@ -1,19 +1,46 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/InstructionDecoder_tb_isim_beh.exe -prj C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/InstructionDecoder_tb_beh.prj work.InstructionDecoder_tb work.glbl 
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath_tb_isim_beh.exe" -prj "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath_tb_beh.prj" "work.Datapath_tb" "work.glbl" 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 2
 Turning on mult-threading, number of parallel sub-compilation jobs: 4 
 Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/twomux5.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/twomux32.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/twomux1.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/threemux32.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/nbit_register_file.v" into library work
 Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/InstructionDecoder.v" into library work
-Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/InstructionDecoder_tb.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/IMem.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/DMem.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/ALU.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" into library work
+Analyzing Verilog file "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath_tb.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:329 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 90: Target <NextPC> of concurrent assignment or output port connection should be a net type.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 90: Size mismatch in connection of port <In0>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath_tb.v" Line 50: Size mismatch in connection of port <PCSrc>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 40: Size mismatch in connection of port <Out>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 41: Size mismatch in connection of port <PC>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 44: Size mismatch in connection of port <IRWrite>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 53: Size mismatch in connection of port <Out>. Formal port size is 5-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 56: Size mismatch in connection of port <write_data>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 98: Size mismatch in connection of port <WriteData>. Formal port size is 32-bit while actual signal size is 1-bit.
 Completed static elaboration
+Compiling module twomux32
+Compiling module IMem
 Compiling module InstructionDecoder
-Compiling module InstructionDecoder_tb
+Compiling module twomux5
+Compiling module nbit_register_file
+Compiling module threemux32
+Compiling module ALU
+Compiling module DMem
+Compiling module twomux1
+Compiling module Datapath
+Compiling module Datapath_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
-Compiled 3 Verilog Units
-Built simulation executable C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/InstructionDecoder_tb_isim_beh.exe
-Fuse Memory Usage: 26820 KB
-Fuse CPU Usage: 421 ms
+Waiting for 9 sub-compilation(s) to finish...
+Compiled 12 Verilog Units
+Built simulation executable C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath_tb_isim_beh.exe
+Fuse Memory Usage: 27316 KB
+Fuse CPU Usage: 482 ms
