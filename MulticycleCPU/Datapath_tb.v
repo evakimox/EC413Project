@@ -34,7 +34,7 @@ module Datapath_tb;
 	reg MemWrite;
 	reg MemtoReg;
 	reg BEQ;
-	reg PCSrc;
+	reg [1:0]PCSrc;
 
 	// Instantiate the Unit Under Test (UUT)
 	Datapath uut (
@@ -49,6 +49,7 @@ module Datapath_tb;
 		.BEQ(BEQ), 
 		.PCSrc(PCSrc)
 	);
+	
 always #5 clk=~clk;
 	initial begin
 		// Initialize Inputs

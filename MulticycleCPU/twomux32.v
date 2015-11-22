@@ -27,3 +27,4 @@ output [31:0]Out;
 assign Out = (Sel==0)?In0:In1;
 
 endmodule
+

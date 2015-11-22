@@ -23,17 +23,19 @@ module Datapath(clk, SelectIns , RegWrite , RegDst , ALUSrcA , ALUSrcB , MemWrit
 input clk;
 reg [31:0]PC;
 reg [31:0]NextPC;
+reg [31:0]ALUoutput;
+
 initial
 	begin
-		PC = 0;
-		NextPC = 0;
+		PC = 32'h00000000;
+		NextPC = 32'h00000000;
+		ALUoutput=32'h00000000;
 	end
 
-wire [31:0]Ins,Ins_pc,Ins_ALUout;
+wire [31:0]Ins,InsSrc,Ins_ALUout;
 wire [5:0]OPcode;
 wire [4:0]Rs,Rd,Rt;
 wire [15:0]imm;
-reg [31:0]ALUoutput;
 
 //Instruction fetch
 input SelectIns;    //control signal IorD
@@ -51,8 +53,8 @@ wire [31:0]A,B,write_data;
 input RegWrite;	//control signal RegWrite
 input RegDst; 	//control signal ResDst
 twomux5 selectwhichregistertowrite(Rt,Rd,RegDst,RegBeingWritten);
-reg write_data_reg;		//I think this is usually the ALUout
-reg WriteData_mem;		//This one have only 1 possible source
+reg [31:0]write_data_reg;		//I think this is usually the ALUout
+reg [31:0]WriteData_mem;		//This one have only 1 possible source
 nbit_register_file RF(write_data_reg, A, B, Rs, Rt, RegbeingWritten, RegWrite, clk);
 
 //Selecting which to input to ALU
@@ -84,8 +86,8 @@ wire [31:0]JMPaddress;
 assign JMPaddress[15:0]=imm;
 assign JMPaddress[31:16]=16'b0000;
 wire [31:0]PCInput;
-wire IncrementPC;
-assign IncrementPC=PC+1;
+wire [31:0]IncrementPC;
+assign IncrementPC = PC + 32'h00000001;
 input [1:0]PCSrc;
 threemux32 pcsrc(IncrementPC,ALUresult,JMPaddress,PCSrc,NextPC);
 

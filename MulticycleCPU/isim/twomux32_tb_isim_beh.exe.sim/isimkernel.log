@@ -1,0 +1,10 @@
+Command line:
+   twomux32_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  49229
+
+Sun Nov 22 15:05:05 2015
+
+
+ Elaboration Time: 0.0312 sec
