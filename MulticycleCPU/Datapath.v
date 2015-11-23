@@ -22,17 +22,17 @@ module Datapath(clk, SelectIns , RegWrite , RegDst , ALUSrcA , ALUSrcB , MemWrit
 
 input clk;
 reg [31:0]PC;
-reg [31:0]NextPC;
+wire [31:0]NextPC;
 reg [31:0]ALUoutput;
 
 initial
 	begin
 		PC = 32'h00000000;
-		NextPC = 32'h00000000;
+		//NextPC = 32'h00000000;
 		ALUoutput=32'h00000000;
 	end
 
-wire [31:0]Ins,InsSrc,Ins_ALUout;
+wire [31:0]Ins,InsSrc;
 wire [5:0]OPcode;
 wire [4:0]Rs,Rd,Rt;
 wire [15:0]imm;
@@ -49,13 +49,14 @@ InstructionDecoder ID(1,clk,Ins,OPcode,Rs,Rt,Rd,imm);
 //Instruction fetching and decoding done, Every type must go through
 
 //reading/Writing register files
-wire [31:0]A,B,write_data;
+wire [31:0]A,B/*,write_data*/;
 input RegWrite;	//control signal RegWrite
 input RegDst; 	//control signal ResDst
-twomux5 selectwhichregistertowrite(Rt,Rd,RegDst,RegBeingWritten);
+wire [4:0]WriteRegAdd;
+twomux5 choosse_write_reg(Rt,Rd,RegDst,WriteRegAdd);
 reg [31:0]write_data_reg;		//I think this is usually the ALUout
 reg [31:0]WriteData_mem;		//This one have only 1 possible source
-nbit_register_file RF(write_data_reg, A, B, Rs, Rt, RegbeingWritten, RegWrite, clk);
+nbit_register_file RF(write_data_reg, A, B, Rs, Rt, WriteRegAdd, RegWrite, clk);
 
 //Selecting which to input to ALU
 input ALUSrcA;  //control signal ALUSrcA
@@ -85,7 +86,6 @@ ALU ALU(ALU_A,ALU_B,ALUresult,ALU_selection,BEQflag);
 wire [31:0]JMPaddress;
 assign JMPaddress[15:0]=imm;
 assign JMPaddress[31:16]=16'b0000;
-wire [31:0]PCInput;
 wire [31:0]IncrementPC;
 assign IncrementPC = PC + 32'h00000001;
 input [1:0]PCSrc;

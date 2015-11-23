@@ -21,12 +21,12 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/twomux32.v";
+static const char *ng0 = "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/twomux5.v";
 static int ng1[] = {0, 0};
 
 
 
-static void Cont_27_0(char *t0)
+static void Cont_28_0(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -71,7 +71,15 @@ static void Cont_27_0(char *t0)
     char *t41;
     char *t42;
     char *t43;
-    char *t44;
+    unsigned int t44;
+    unsigned int t45;
+    char *t46;
+    unsigned int t47;
+    unsigned int t48;
+    char *t49;
+    unsigned int t50;
+    unsigned int t51;
+    char *t52;
 
 LAB0:    t1 = (t0 + 2688U);
     t2 = *((char **)t1);
@@ -80,7 +88,7 @@ LAB0:    t1 = (t0 + 2688U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(27, ng0);
+LAB2:    xsi_set_current_line(28, ng0);
     t2 = (t0 + 1368U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -147,10 +155,22 @@ LAB20:    t33 = (t0 + 3088);
     t41 = *((char **)t40);
     t42 = (t41 + 56U);
     t43 = *((char **)t42);
-    memcpy(t43, t3, 8);
-    xsi_driver_vfirst_trans(t33, 0, 31);
-    t44 = (t0 + 3008);
-    *((int *)t44) = 1;
+    memset(t43, 0, 8);
+    t44 = 31U;
+    t45 = t44;
+    t46 = (t3 + 4);
+    t47 = *((unsigned int *)t3);
+    t44 = (t44 & t47);
+    t48 = *((unsigned int *)t46);
+    t45 = (t45 & t48);
+    t49 = (t43 + 4);
+    t50 = *((unsigned int *)t43);
+    *((unsigned int *)t43) = (t50 | t44);
+    t51 = *((unsigned int *)t49);
+    *((unsigned int *)t49) = (t51 | t45);
+    xsi_driver_vfirst_trans(t33, 0, 4);
+    t52 = (t0 + 3008);
+    *((int *)t52) = 1;
 
 LAB1:    return;
 LAB6:    t21 = (t6 + 4);
@@ -174,7 +194,7 @@ LAB14:    t33 = (t0 + 1208U);
     t39 = *((char **)t33);
     goto LAB15;
 
-LAB16:    xsi_vlog_unsigned_bit_combine(t3, 32, t34, 32, t39, 32);
+LAB16:    xsi_vlog_unsigned_bit_combine(t3, 5, t34, 5, t39, 5);
     goto LAB20;
 
 LAB18:    memcpy(t3, t34, 8);
@@ -183,9 +203,9 @@ LAB18:    memcpy(t3, t34, 8);
 }
 
 
-extern void work_m_00000000001030683161_1888434687_init()
+extern void work_m_00000000001030683161_4209419755_init()
 {
-	static char *pe[] = {(void *)Cont_27_0};
-	xsi_register_didat("work_m_00000000001030683161_1888434687", "isim/twomux32_isim_beh.exe.sim/work/m_00000000001030683161_1888434687.didat");
+	static char *pe[] = {(void *)Cont_28_0};
+	xsi_register_didat("work_m_00000000001030683161_4209419755", "isim/Datapath_tb_isim_beh.exe.sim/work/m_00000000001030683161_4209419755.didat");
 	xsi_register_executes(pe);
 }

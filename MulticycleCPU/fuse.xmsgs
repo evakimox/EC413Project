@@ -5,16 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 92: Target &lt;<arg fmt="%s" index="1">NextPC</arg>&gt; of concurrent assignment or output port connection should be a net type.
-</msg>
-
 <msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 46: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">IRWrite</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 55: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">Out</arg>&gt;. Formal port size is <arg fmt="%d" index="2">5</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
-</msg>
-
-<msg type="warning" file="HDLCompiler" num="189" delta="unknown" >"C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 58: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">write_address</arg>&gt;. Formal port size is <arg fmt="%d" index="2">5</arg>-bit while actual signal size is <arg fmt="%d" index="1">1</arg>-bit.
 </msg>
 
 </messages>

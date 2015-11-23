@@ -27,17 +27,18 @@ module ALU(
 	 output reg [31:0]ALUoutput;
 	 output reg Beq_alu;
 	 
-always @ (ALU_selection,ALU_in_A,ALU_in_B)
+always @ (ALU_selection or ALU_in_A or ALU_in_B)
 begin	 
 	 case(ALU_selection)
-		4'b0000: assign ALUoutput = ALU_in_A;
-		4'b0001: assign ALUoutput = ~ALU_in_A;
-		4'b0010: assign ALUoutput = ALU_in_A + ALU_in_B;
-		4'b0011: assign ALUoutput = ALU_in_A - ALU_in_B;
-		4'b0100: assign ALUoutput = ALU_in_A | ALU_in_B;
-		4'b0101: assign ALUoutput = ALU_in_A & ALU_in_B;
-		4'b0111: assign ALUoutput = (ALU_in_A<ALU_in_B)?1:0;
-		4'b1001: assign ALUoutput = ALU_in_B;	//B can be the immediate while A cannot
+		4'b0000: assign ALUoutput = ALU_in_A; //mov
+		4'b0001: assign ALUoutput = ~ALU_in_A;	//not
+		4'b0010: assign ALUoutput = ALU_in_A + ALU_in_B;//add
+		4'b0011: assign ALUoutput = ALU_in_A - ALU_in_B;//sub
+		4'b0100: assign ALUoutput = ALU_in_A | ALU_in_B;//or
+		4'b0101: assign ALUoutput = ALU_in_A & ALU_in_B;//and
+		4'b0111: assign ALUoutput = (ALU_in_A<ALU_in_B)?32'd1:32'd0;//slt
+		4'b1001: assign ALUoutput = {ALUoutput[31:16],ALU_in_B[15:0]};	//Li
+		4'b1010: assign ALUoutput = {ALU_in_B[15:0],ALUoutput[15:0]};	//Lui
 	endcase
 	assign Beq_alu = (ALU_in_A==ALU_in_B)?1:0;
 end
