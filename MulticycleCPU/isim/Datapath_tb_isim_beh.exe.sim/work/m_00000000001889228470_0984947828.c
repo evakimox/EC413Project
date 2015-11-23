@@ -23,19 +23,19 @@
 #endif
 static const char *ng0 = "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/IMem.v";
 static int ng1[] = {0, 0};
-static unsigned int ng2[] = {3825270783U, 0U};
+static unsigned int ng2[] = {0U, 0U};
 static int ng3[] = {1, 0};
-static unsigned int ng4[] = {3892379647U, 0U};
+static unsigned int ng4[] = {3357605893U, 0U};
 static int ng5[] = {2, 0};
-static unsigned int ng6[] = {3827302400U, 0U};
+static unsigned int ng6[] = {3359768586U, 0U};
 static int ng7[] = {3, 0};
-static unsigned int ng8[] = {3894411264U, 0U};
+static unsigned int ng8[] = {3361996792U, 0U};
 static int ng9[] = {4, 0};
-static unsigned int ng10[] = {3829399554U, 0U};
+static unsigned int ng10[] = {3431202817U, 0U};
 static int ng11[] = {5, 0};
-static unsigned int ng12[] = {3896508416U, 0U};
+static unsigned int ng12[] = {3500518058U, 0U};
 static int ng13[] = {6, 0};
-static unsigned int ng14[] = {1214255104U, 0U};
+static unsigned int ng14[] = {3569811455U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U};
 static int ng15[] = {7, 0};
 static unsigned int ng16[] = {4032823301U, 0U};
 static int ng17[] = {8, 0};
@@ -66,7 +66,6 @@ static int ng41[] = {20, 0};
 static int ng42[] = {21, 0};
 static unsigned int ng43[] = {3411673095U, 0U};
 static int ng44[] = {22, 0};
-static unsigned int ng45[] = {0U, 0U};
 
 
 
@@ -359,7 +358,7 @@ LAB49:    xsi_set_current_line(129, ng0);
     goto LAB55;
 
 LAB51:    xsi_set_current_line(131, ng0);
-    t3 = ((char*)((ng45)));
+    t3 = ((char*)((ng2)));
     t4 = (t0 + 1584);
     xsi_vlogvar_assign_value(t4, t3, 0, 0, 32);
     goto LAB55;

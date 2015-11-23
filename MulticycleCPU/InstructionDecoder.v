@@ -18,16 +18,15 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module InstructionDecoder(IRWrite,clk,
+module InstructionDecoder(IRWrite,
     FullIns,OPcode,Rs,Rt,Rd,imm);
 	 input IRWrite;
-	 input clk;
 	 input [31:0]FullIns;
 	 output reg [5:0]OPcode;
 	 output reg [4:0]Rs,Rd,Rt;
 	 output reg [15:0]imm;
 
-always @ (posedge clk)
+always @ (FullIns or IRWrite)
 begin
 	 assign OPcode = (IRWrite)?FullIns[31:26]:OPcode;
 	 assign Rs = (IRWrite)?FullIns[25:21]:Rs;

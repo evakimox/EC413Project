@@ -27,6 +27,11 @@ module ALU(
 	 output reg [31:0]ALUoutput;
 	 output reg Beq_alu;
 	 
+	 initial 
+	 begin 
+	 ALUoutput = 32'h0000;
+	 end
+	 
 always @ (ALU_selection or ALU_in_A or ALU_in_B)
 begin	 
 	 case(ALU_selection)
@@ -37,8 +42,8 @@ begin
 		4'b0100: assign ALUoutput = ALU_in_A | ALU_in_B;//or
 		4'b0101: assign ALUoutput = ALU_in_A & ALU_in_B;//and
 		4'b0111: assign ALUoutput = (ALU_in_A<ALU_in_B)?32'd1:32'd0;//slt
-		4'b1001: assign ALUoutput = {ALUoutput[31:16],ALU_in_B[15:0]};	//Li
-		4'b1010: assign ALUoutput = {ALU_in_B[15:0],ALUoutput[15:0]};	//Lui
+		4'b1001: assign ALUoutput = {16'h0000,ALU_in_B[15:0]};	//Li
+
 	endcase
 	assign Beq_alu = (ALU_in_A==ALU_in_B)?1:0;
 end

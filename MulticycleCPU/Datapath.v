@@ -43,18 +43,25 @@ twomux32 selectinstruction(PC,ALUoutput,SelectIns,InsSrc);		//PC and AlUoutput a
 IMem IF(InsSrc,Ins);		//Actually fetch the instruction into wire Ins
 
 //Instruction decoding
-InstructionDecoder ID(1,clk,Ins,OPcode,Rs,Rt,Rd,imm);
+InstructionDecoder ID(1,Ins,OPcode,Rs,Rt,Rd,imm);
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //Instruction fetching and decoding done, Every type must go through
 
 //reading/Writing register files
-wire [31:0]A,B/*,write_data*/;
+wire [31:0]A,B;
 input RegWrite;	//control signal RegWrite
 input RegDst; 	//control signal ResDst
 wire [4:0]WriteRegAdd;
-twomux5 choosse_write_reg(Rt,Rd,RegDst,WriteRegAdd);
+twomux5 choosse_write_reg(Rs,Rd,RegDst,WriteRegAdd);
 reg [31:0]write_data_reg;		//I think this is usually the ALUout
+
+// try
+always @(ALUresult)
+begin
+assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
+end
+
 reg [31:0]WriteData_mem;		//This one have only 1 possible source
 nbit_register_file RF(write_data_reg, A, B, Rs, Rt, WriteRegAdd, RegWrite, clk);
 
@@ -106,11 +113,16 @@ twomux1 selectbranchcondition(BEQflag,~BEQflag,BEQ,branch);
 
 input MemtoReg;
 //prepare every registers
+always @(ALUresult)
+begin
+ALUoutput <= ALUresult;
+end 
+
 always @(posedge clk)
 begin 
-ALUoutput <= ALUresult;
+//ALUoutput <= ALUresult;
 WriteData_mem <= B;
-assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
+//assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
 PC <= NextPC;
 end
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
