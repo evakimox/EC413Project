@@ -96,6 +96,9 @@ assign JMPaddress[31:16]=16'b0000;
 wire [31:0]IncrementPC;
 assign IncrementPC = PC + 32'h00000001;
 input [1:0]PCSrc;
+
+//This may not be alu result!!!!
+//ATTENTION!!!!!
 threemux32 pcsrc(IncrementPC,ALUresult,JMPaddress,PCSrc,NextPC);
 
 //Dmem
