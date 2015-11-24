@@ -88,7 +88,7 @@ case(PC)
 	// SWI  $R3, [0x5]
 	7: Instruction=  32'b010000_00111_00001_0000000000000000;		// R, mov r1 to r7					=> r7 = 00000005
 	// LWI  $R1, [0x5]
-	8: Instruction=  32'b010000_01000_00010_0000000000000000;		// R, mov r2 to r8					=> r8 = 0000000A
+	8: Instruction=  32'b010000_01000_00010_0110000000000000;		// R, mov r2 to r8					=> r8 = 0000000A
 
 	//
 	// 1.3) Third part: simple loop tests, to check branch

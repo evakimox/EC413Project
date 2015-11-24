@@ -64,302 +64,302 @@ always #5 clk=~clk;
 		PCSrc = 0;
 
 		// Wait 100 ns for global reset to finish
-		#2;
+		#102;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b0	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b0		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
+		PCSrc = 2'b00		;	
 
-		#12;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#22;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#32;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#42;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#52;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-      #62;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#72;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-
-		#82;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
-		#92;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
-		#102;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00 		;	
-		
 		#112;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b10	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
+		PCSrc = 2'b00		;	
+
 		#122;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b10	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
+		PCSrc = 2'b00		;	
+
 		#132;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b10	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
+		PCSrc = 2'b00		;	
+
 		#142;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b0	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b1			;
-		PCSrc = 2'd01		;	
-		
-		#152;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b0	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b1			;
-		PCSrc = 2'd01		;	
-		
-		#162;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b10	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
-		#172;
+		PCSrc = 2'b00		;	
+
+		#152;
 		SelectIns = 1'b0	;
-		RegWrite = 1'b0	;
+		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b1	;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
+		PCSrc = 2'b00		;	
+
+      #162;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+
+		#172;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+
 		#182;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b1	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
-		
-		#192;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b0	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd01		;	
+		PCSrc = 2'b00		;	
+		
+		#192;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
 		
 		#202;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
+		ALUSrcB = 2'b00		;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;	
+		PCSrc = 2'b00 		;	
 		
 		#212;
 		SelectIns = 1'b0	;
-		RegWrite = 1'b0	;
+		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd01		;	
+		PCSrc = 2'b00		;	
 		
 		#222;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd2	;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;
-
+		PCSrc = 2'b00		;	
+		
 		#232;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd00		;
+		PCSrc = 2'b00		;	
 		
 		#242;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;
-		
-		#252;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'd00		;
-		
-		#262;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b0	;
 		RegDst = 1'b0		;
 		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'd0	;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b1			;
+		PCSrc = 2'b001		;	
+		
+		#252;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b0	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b1			;
+		PCSrc = 2'b001		;	
+		
+		#262;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
 		MemWrite = 1'b0	;
 		MemtoReg = 1'b0	;
 		BEQ = 1'b0			;
-		PCSrc = 2'd2		;
+		PCSrc = 2'b00		;	
+		
+		#272;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b0	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b1	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+		
+		#282;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b1	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+		
+		#292;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b0	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b001		;	
+		
+		#302;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+		
+		#312;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b0	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b001		;	
+		
+		#322;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b10	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;
+
+		#332;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;
+		
+		#342;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;
+		
+		#352;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;
+		
+		#362;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b0	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b10		;
 		
 		
 		// Add stimulus here

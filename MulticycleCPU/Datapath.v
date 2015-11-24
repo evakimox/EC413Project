@@ -63,11 +63,10 @@ assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
 end
 
 reg [31:0]WriteData_mem;		//This one have only 1 possible source
-nbit_register_file RF(write_data_reg, A, B, Rs, Rt, WriteRegAdd, RegWrite, clk);
+nbit_register_file RF(write_data_reg, A, B, Rt, Rd, WriteRegAdd, RegWrite, clk);
 
 //Selecting which to input to ALU
 input ALUSrcA;  //control signal ALUSrcA
-input [1:0]ALUSrcB;   //control signal ALUSrcB
 wire [31:0]ALU_A,ALU_B;
 //choose ALU input port A
 twomux32 selectALUinputA(PC,A,ALUSrcA,ALU_A);
@@ -75,7 +74,9 @@ twomux32 selectALUinputA(PC,A,ALUSrcA,ALU_A);
 wire [31:0]IMM32;
 assign IMM32[15:0]=imm;
 assign IMM32[31:16]=(imm[15])?16'hFFFF:16'h0000;
+
 //choose ALU input port B
+input [1:0]ALUSrcB;   //control signal ALUSrcB
 threemux32 selectALUinputB(B,1,IMM32,ALUSrcB,ALU_B);
 
 //ALUOperation

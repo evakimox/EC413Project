@@ -1,0 +1,29 @@
+Command line:
+   ThreeMux_32_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  50467
+
+Mon Nov 23 18:12:51 2015
+
+
+ Elaboration Time: 0.0156 sec
+
+ Current Memory Usage: 667.742 Meg
+
+ Total Signals          : 18
+ Total Nets             : 143
+ Total Signal Drivers   : 10
+ Total Blocks           : 3
+ Total Primitive Blocks : 2
+ Total Processes        : 16
+ Total Traceable Variables  : 23
+ Total Scalar Nets and Variables : 353
+Total Line Count : 40
+
+ Total Simulation Time: 0.0468 sec
+
+ Current Memory Usage: 982.315 Meg
+
+Mon Nov 23 18:13:48 2015
+
