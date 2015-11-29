@@ -18,12 +18,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Datapath(clk, SelectIns , RegWrite , RegDst , ALUSrcA , ALUSrcB , MemWrite ,MemtoReg, BEQ, PCSrc);
+module Datapath(clk, SelectIns , RegWrite , RegDst , ALUSrcA , ALUSrcB , MemWrite ,MemtoReg, BEQ, PCSrc,ALUoutput);
 
 input clk;
 reg [31:0]PC;
 wire [31:0]NextPC;
-reg [31:0]ALUoutput;
+output reg [31:0]ALUoutput;
 
 initial
 	begin
@@ -72,8 +72,11 @@ wire [31:0]ALU_A,ALU_B;
 twomux32 selectALUinputA(PC,A,ALUSrcA,ALU_A);
 //sign extend
 wire [31:0]IMM32;
+wire [15:0]signext,zeroext;
 assign IMM32[15:0]=imm;
-assign IMM32[31:16]=(imm[15])?16'hFFFF:16'h0000;
+assign signext=(imm[15])?16'hFFFF:16'h0000;
+assign zeroext=16'h0000;
+assign IMM32[31:16] = (OPcode[3:0]== 4'd0||OPcode[3:0]== 4'd1||OPcode[3:0]== 4'd2||OPcode[3:0]== 4'd3||OPcode[3:0]== 4'd7)?signext:zeroext;
 
 //choose ALU input port B
 input [1:0]ALUSrcB;   //control signal ALUSrcB
@@ -98,9 +101,20 @@ wire [31:0]IncrementPC;
 assign IncrementPC = PC + 32'h00000001;
 input [1:0]PCSrc;
 
-//This may not be alu result!!!!
-//ATTENTION!!!!!
-threemux32 pcsrc(IncrementPC,ALUresult,JMPaddress,PCSrc,NextPC);
+wire Branch_flag;
+wire [31:0]Branchornot;
+
+always @(OPcode)
+begin
+case(OPcode)
+32:   assign Branch_flag = BEQflag;
+33:	assign Branch_flag = ~BEQflag;
+default: assign Branch_flag = 0;
+endcase
+end
+
+assign Branchornot = (Branch_flag)?PC:IMM32;
+threemux32 pcsrc(IncrementPC,Branchornot,JMPaddress,PCSrc,NextPC);
 
 //Dmem
 wire [15:0]address;

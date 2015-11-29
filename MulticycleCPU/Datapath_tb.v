@@ -64,7 +64,7 @@ always #5 clk=~clk;
 		PCSrc = 0;
 
 		// Wait 100 ns for global reset to finish
-		#102;
+		#2;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b0	;
 		RegDst = 1'b0		;
@@ -75,7 +75,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#112;
+		#12;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -86,7 +86,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#122;
+		#22;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -97,7 +97,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#132;
+		#32;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -108,7 +108,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#142;
+		#42;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -119,7 +119,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#152;
+		#52;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -130,7 +130,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-      #162;
+      #62;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -141,7 +141,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#172;
+		#72;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -152,18 +152,7 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 
-		#182;
-		SelectIns = 1'b0	;
-		RegWrite = 1'b1	;
-		RegDst = 1'b0		;
-		ALUSrcA = 1'b1		;
-		ALUSrcB = 2'b00	;
-		MemWrite = 1'b0	;
-		MemtoReg = 1'b0	;
-		BEQ = 1'b0			;
-		PCSrc = 2'b00		;	
-		
-		#192;
+		#82;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
@@ -174,7 +163,18 @@ always #5 clk=~clk;
 		BEQ = 1'b0			;
 		PCSrc = 2'b00		;	
 		
-		#202;
+		#92;
+		SelectIns = 1'b0	;
+		RegWrite = 1'b1	;
+		RegDst = 1'b0		;
+		ALUSrcA = 1'b1		;
+		ALUSrcB = 2'b00	;
+		MemWrite = 1'b0	;
+		MemtoReg = 1'b0	;
+		BEQ = 1'b0			;
+		PCSrc = 2'b00		;	
+		
+		#102;
 		SelectIns = 1'b0	;
 		RegWrite = 1'b1	;
 		RegDst = 1'b0		;
