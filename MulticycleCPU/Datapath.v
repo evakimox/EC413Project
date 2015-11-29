@@ -113,7 +113,7 @@ default: assign Branch_flag = 0;
 endcase
 end
 
-assign Branchornot = (Branch_flag)?PC:IMM32;
+assign Branchornot = (Branch_flag)?IncrementPC:IMM32;
 threemux32 pcsrc(IncrementPC,Branchornot,JMPaddress,PCSrc,NextPC);
 
 //Dmem
