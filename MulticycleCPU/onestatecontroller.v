@@ -18,6 +18,27 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/*
+			R type 
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+*/
 module onestatecontroller(clock,reset,OPcode,
 					PCWriteCond,
 					PCWrite,
@@ -69,64 +90,257 @@ begin
 			RegWrite= 1'b0;
 			RegDst= 1'b0;
 			PCSrc= 2'd0;
-			ALUOP= 4'd0;
+			ALUOP= 4'd0;   //Alu have 4bit selection input
 			ALUSrcB= 2'd0;
 		end
 	else 
 		begin
 			if(OPcode==6'd1)	//j
-			PCSrc=2'd2;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//DONT CARE but most ALUSrcA are 1
+			RegWrite= 1'b0;			//dont write to register
+			RegDst= 1'b0;				//DONT CARE because ^ 
+			PCSrc=2'd2;					//chose jump address
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd2;				//the immediate   not sure how this work  ^prob choose mov?
+			end
 			else
 			if(OPcode==6'd16)	//mov
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd17)	//not
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd18)	//add
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd19)	//sub
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else			
 			if(OPcode==6'd20)	//or
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd21)	//and
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd23)	//slt
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//DONT CARE because it is not branch
+			ALUSrcA= 1'b1;				//ALUSrcA is the register data
+			RegWrite= 1'b1;			//write to register
+			RegDst= 1'b1;				//choose Rd to write to 
+			PCSrc=2'd0;					//normal instruction
+			ALUOP= OPcode[3:0];   	//Alu have 4bit selection input
+			ALUSrcB= 2'd0;				//choose from register
+			end
 			else
 			if(OPcode==6'd32)	//beq
-			PCSrc=2'd1;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b1;					//BEQ
+			ALUSrcA= 1'b1;				//ALUA comes from the register
+			RegWrite= 1'b0;			//dont write to register
+			RegDst= 1'b1;				//DONT CARE because of ^ 
+			PCSrc=2'd1;					//branch instruction
+			ALUOP= OPcode[3:0];   	//ALU will compare A and B anyway
+			ALUSrcB= 2'd0;				//ALUB choose from register
+			end
 			else
 			if(OPcode==6'd33)	//bne
-			PCSrc=2'd1;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//BNE
+			ALUSrcA= 1'b1;				//ALUA comes from the register
+			RegWrite= 1'b0;			//dont write to register
+			RegDst= 1'b1;				//DONT CARE because of ^ 
+			PCSrc=2'd1;					//branch instruction
+			ALUOP= OPcode[3:0];   	//ALU will compare A and B anyway
+			ALUSrcB= 2'd0;				//ALUB choose from register
+			end
 			else
 			if(OPcode==6'd50)	//addi
-			PCSrc=2'd0;
+			begin
+			PCWriteCond= 1'b0;		//this became useless cuz PC always change to new value
+			PCWrite= 1'b1;				//this always true because ^
+			IorD= 1'b0;					//select instruction address from pc
+			MemRead= 1'b1;				//Read IMem for instruction
+			MemWrite= 1'b0;			//dont write to memory
+			MemtoReg= 1'b0;			//dont load to register
+			IRWrite= 1'b1;				//activate the decoder
+			BEQ= 1'b0;					//BEQ
+			ALUSrcA= 1'b1;				//ALUA comes from the register
+			RegWrite= 1'b0;			//dont write to register
+			RegDst= 1'b1;				//DONT CARE because of ^ 
+			PCSrc=2'd1;					//branch instruction
+			ALUOP= OPcode[3:0];   	//ALU will compare A and B anyway
+			ALUSrcB= 2'd0;				//ALUB choose from register
+			end
 			else
 			if(OPcode==6'd51)	//subi
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd52)	//ori
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd53)	//andi
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd55)	//slti
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd57)	//li
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd59)	//lwi
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 			else
 			if(OPcode==6'd60)	//swi
+			begin
 			PCSrc=2'd0;
+			ALUOP= OPcode[3:0];   //Alu have 4bit selection input
+			ALUSrcB= 2'd0;
+			end
 		end
 end
 

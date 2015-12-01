@@ -28,7 +28,6 @@ output reg [31:0]ALUoutput;
 initial
 	begin
 		PC = 32'h00000000;
-		//NextPC = 32'h00000000;
 		ALUoutput=32'h00000000;
 	end
 
@@ -63,7 +62,9 @@ assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
 end
 
 reg [31:0]WriteData_mem;		//This one have only 1 possible source
-nbit_register_file RF(write_data_reg, A, B, Rt, Rd, WriteRegAdd, RegWrite, clk);
+wire [4:0]Source2;
+assign Source2 = (OPcode==6'b100000||OPcode==6'b100001)?Rs:Rd;
+nbit_register_file RF(write_data_reg, A, B, Rt, Source2, WriteRegAdd, RegWrite, clk);
 
 //Selecting which to input to ALU
 input ALUSrcA;  //control signal ALUSrcA
@@ -85,9 +86,9 @@ threemux32 selectALUinputB(B,1,IMM32,ALUSrcB,ALU_B);
 //ALUOperation
 wire [3:0]ALU_selection;
 assign ALU_selection=OPcode[3:0];
-wire BEQflag;	//alu's output
+wire BranchEQ;	//alu's output
 wire [31:0]ALUresult;	//alu's output
-ALU ALU(ALU_A,ALU_B,ALUresult,ALU_selection,BEQflag);
+ALU ALU(ALU_A,ALU_B,ALUresult,ALU_selection,BranchEQ);
 
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,19 +103,14 @@ assign IncrementPC = PC + 32'h00000001;
 input [1:0]PCSrc;
 
 wire Branch_flag;
-wire [31:0]Branchornot;
+wire BranchType;
+wire [31:0]BranchTarget;
 
-always @(OPcode)
-begin
-case(OPcode)
-32:   assign Branch_flag = BEQflag;
-33:	assign Branch_flag = ~BEQflag;
-default: assign Branch_flag = 0;
-endcase
-end
+assign BranchType = (OPcode==6'b100000)?(BranchEQ):(~BranchEQ);
 
-assign Branchornot = (Branch_flag)?IMM32:IncrementPC;
-threemux32 pcsrc(IncrementPC,Branchornot,JMPaddress,PCSrc,NextPC);
+assign Branch_flag = (OPcode==6'b100000||OPcode==6'b100001)?BranchType:0;
+assign BranchTarget = (Branch_flag)?IMM32:IncrementPC;
+threemux32 pcsrc(IncrementPC,BranchTarget,JMPaddress,PCSrc,NextPC);
 
 //Dmem
 wire [15:0]address;
@@ -126,8 +122,8 @@ DMem MEM(WriteData_mem, MemData,address,MemWrite,clk);
 
 //Choosing branch
 input BEQ; //control signal BEQ
-wire branch;				
-twomux1 selectbranchcondition(BEQflag,~BEQflag,BEQ,branch);
+//wire branch;				
+//twomux1 selectbranchcondition(BranchEQ,~BranchEQ,BEQ,branch);
 
 input MemtoReg;
 //prepare every registers

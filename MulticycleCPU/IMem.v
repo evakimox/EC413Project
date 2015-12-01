@@ -110,7 +110,7 @@ case(PC)
 	// ADDI $R24, $R24, 0x0001
 	14: Instruction=  32'b100000_01100_01101_0000000000000000;		// BEQ, Jump to 0 when r12 = r13
 	// BLT 	$R24, $R23, 0xFFFE
-	15: Instruction= 32'b100000_01000_01101_0000000000000011;		// BEQ, Jump to 17 when r8 = r13
+	15: Instruction= 32'b100000_01000_01101_0000000000010001;		// BEQ, Jump to 17 when r8 = r13
 
 	
 	// ADDI $R25, $R25, 0x0001
@@ -121,11 +121,11 @@ case(PC)
 	// J 21	/ should skip the two addi 5 and go to addi 7
 	18: Instruction= 32'b111011_01110_00000_0000000000001000;		// LWI r14 from MEM address 0x08   	=> r14 = 0000000A
 	// ADDI $R0, $R0, 0x0005
-	19: Instruction= 32'b100001_01101_01110_0000000000000001;		// BNE, Jump to 21 when r13 != r14
+	19: Instruction= 32'b100001_01101_01110_0000000000010101;		// BNE, Jump to 21 when r13 != r14
 	// ADDI $R0, $R0, 0x0005
 	20: Instruction= 32'b111001_01111_00000_0000000000001000;		// LI r15 from immediate 8			=> r15 = 00000008
 	// ADDI $R26, $R26, 0x0007
-	21: Instruction= 32'b100001_01100_01110_0000000000000001;		// BNE, Jump to 23 when r12 != r14
+	21: Instruction= 32'b100001_01100_01110_0000000000010111;		// BNE, Jump to 23 when r12 != r14
 	// NOOP
 	22: Instruction= 32'b111001_01111_00000_0000000000001011;		// LI r15 from immediate B			=> r15 = 0000000B
 	23: Instruction= 32'b010111_10000_01111_01110_00000000000;		// SLT, r16 = (r15 < r14)			=> r16 = 00000001
