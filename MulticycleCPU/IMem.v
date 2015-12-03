@@ -76,7 +76,7 @@ case(PC)
 	// LUI  $R2, 0x0000	(5)
 	5: Instruction=  32'b110100_00101_00101_1010101010101010;		// I, ori r5 with 0000AAAA  		=> r5 = 00000AAAA
 	// ADD  $R3, $R0, $R2
-	6: Instruction=  332'b110101_00110_00110_1111111111111111;		// I, andi r6 with 0000FFFF 		=> r6 = 00000000
+	6: Instruction=  32'b110101_00110_00110_1111111111111111;		// I, andi r6 with 0000FFFF 		=> r6 = 00000000
 	
 	//
 	// 1.2) Second part: store and load, should store $R3

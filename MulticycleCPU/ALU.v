@@ -41,7 +41,7 @@ begin
 		4'b0011: assign ALUoutput = ALU_in_A - ALU_in_B;//sub
 		4'b0100: assign ALUoutput = ALU_in_A | ALU_in_B;//or
 		4'b0101: assign ALUoutput = ALU_in_A & ALU_in_B;//and
-		4'b0111: assign ALUoutput = (ALU_in_A<ALU_in_B)?32'd1:32'd0;//slt
+		4'b0111: assign ALUoutput = ((ALU_in_A<ALU_in_B)&&(~ALU_in_A[31]&&~ALU_in_B[31]))?32'd1:32'd0;//slt
 		4'b1001: assign ALUoutput = {16'h0000,ALU_in_B[15:0]};	//Li
 		4'b1100: assign ALUoutput = ALU_in_B;//swi 
 	endcase

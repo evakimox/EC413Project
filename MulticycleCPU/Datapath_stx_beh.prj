@@ -1,7 +1,7 @@
 verilog isim_temp "twomux5.v"
 verilog isim_temp "twomux32.v"
-verilog isim_temp "twomux1.v"
 verilog isim_temp "threemux32.v"
+verilog isim_temp "onestatecontroller.v"
 verilog isim_temp "nbit_register_file.v"
 verilog isim_temp "InstructionDecoder.v"
 verilog isim_temp "IMem.v"

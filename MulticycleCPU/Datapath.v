@@ -18,14 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Datapath(clk, SelectIns , RegWrite , RegDst , ALUSrcA , ALUSrcB , MemWrite ,MemtoReg, BEQ, PCSrc,ALUoutput);
+module Datapath(clk,rst);
 
-input clk;
+input clk,rst;
 reg [31:0]PC;
-wire [31:0]NextPC;
-output reg [31:0]ALUoutput;
+wire[31:0]NextPC;
+reg [31:0]ALUoutput;
 
-initial
+always @(rst)
 	begin
 		PC = 32'h00000000;
 		ALUoutput=32'h00000000;
@@ -37,20 +37,42 @@ wire [4:0]Rs,Rd,Rt;
 wire [15:0]imm;
 
 //Instruction fetch
-input SelectIns;    //control signal IorD
-twomux32 selectinstruction(PC,ALUoutput,SelectIns,InsSrc);		//PC and AlUoutput are the addresses of the instruction in I-Mem
+wire SelectIns;    //control signal IorD
+twomux32 selectinstruction(PC,ALUoutput,0,InsSrc);		//PC and AlUoutput are the addresses of the instruction in I-Mem
 IMem IF(InsSrc,Ins);		//Actually fetch the instruction into wire Ins
-
+wire MemtoReg;
+wire MemWrite;   //control signal MemWrite
 //Instruction decoding
 InstructionDecoder ID(1,Ins,OPcode,Rs,Rt,Rd,imm);
+wire [1:0]ALUSrcB;   //control signal ALUSrcB
+wire [1:0]PCSrc;
+wire RegWrite;	//control signal RegWrite
+wire RegDst; 	//control signal ResDst
+wire PCWritrCond;
+wire BEQ; //control signal BEQ
+wire ALUSrcA;  //control signal ALUSrcA
+onestatecontroller ctrl(clk,rst,OPcode,
+					PCWriteCond,
+					PCWrite,
+					SelectIns,
+					MemRead,
+					MemWrite,
+					MemtoReg,
+					IRWrite,
+					BEQ,
+					ALUSrcA,
+					RegWrite,
+					RegDst,
+					PCSrc,
+					ALUOP,
+					ALUSrcB
+					);
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 //Instruction fetching and decoding done, Every type must go through
 
 //reading/Writing register files
 wire [31:0]A,B;
-input RegWrite;	//control signal RegWrite
-input RegDst; 	//control signal ResDst
 wire [4:0]WriteRegAdd;
 twomux5 choosse_write_reg(Rs,Rd,RegDst,WriteRegAdd);
 reg [31:0]write_data_reg;		//I think this is usually the ALUout
@@ -63,11 +85,13 @@ end
 
 reg [31:0]WriteData_mem;		//This one have only 1 possible source
 wire [4:0]Source2;
-assign Source2 = (OPcode==6'b100000||OPcode==6'b100001)?Rs:Rd;
-nbit_register_file RF(write_data_reg, A, B, Rt, Source2, WriteRegAdd, RegWrite, clk);
+wire [4:0]Source1;
+assign Source2 = (OPcode==6'b100000||OPcode==6'b100001||OPcode==6'b111001)?Rs:Rd;
+assign Source1 = (OPcode==6'b111100)?Rs:Rt;
+nbit_register_file RF(write_data_reg, A, B, Source1, Source2, WriteRegAdd, RegWrite, clk);
 
 //Selecting which to input to ALU
-input ALUSrcA;  //control signal ALUSrcA
+
 wire [31:0]ALU_A,ALU_B;
 //choose ALU input port A
 twomux32 selectALUinputA(PC,A,ALUSrcA,ALU_A);
@@ -80,7 +104,7 @@ assign zeroext=16'h0000;
 assign IMM32[31:16] = (OPcode[3:0]== 4'd0||OPcode[3:0]== 4'd1||OPcode[3:0]== 4'd2||OPcode[3:0]== 4'd3||OPcode[3:0]== 4'd7)?signext:zeroext;
 
 //choose ALU input port B
-input [1:0]ALUSrcB;   //control signal ALUSrcB
+
 threemux32 selectALUinputB(B,1,IMM32,ALUSrcB,ALU_B);
 
 //ALUOperation
@@ -100,7 +124,7 @@ assign JMPaddress[15:0]=imm;
 assign JMPaddress[31:16]=16'b0000;
 wire [31:0]IncrementPC;
 assign IncrementPC = PC + 32'h00000001;
-input [1:0]PCSrc;
+
 
 wire Branch_flag;
 wire BranchType;
@@ -116,16 +140,15 @@ threemux32 pcsrc(IncrementPC,BranchTarget,JMPaddress,PCSrc,NextPC);
 wire [15:0]address;
 assign address=imm;
 wire [31:0]MemData;
-input MemWrite;   //control signal MemWrite
 
-DMem MEM(WriteData_mem, MemData,address,MemWrite,clk); 
+
+DMem MEM(A, MemData,address,MemWrite,clk); 
 
 //Choosing branch
-input BEQ; //control signal BEQ
+
 //wire branch;				
 //twomux1 selectbranchcondition(BranchEQ,~BranchEQ,BEQ,branch);
 
-input MemtoReg;
 //prepare every registers
 always @(ALUresult)
 begin
@@ -135,7 +158,7 @@ end
 always @(posedge clk)
 begin 
 //ALUoutput <= ALUresult;
-WriteData_mem <= B;
+//WriteData_mem <= B;
 //assign write_data_reg=(MemtoReg==0)?ALUresult:MemData;
 PC <= NextPC;
 end

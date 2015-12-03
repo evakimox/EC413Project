@@ -76,22 +76,22 @@ always #5 clock=~clock;
 		#100;
 		reset =0;
 		
-		#120;
-		OPcode = 6'd1;
+		#10;
+		OPcode = 6'b111100;
 		
-		#120;
-		OPcode = 6'd17;
+		#10;
+		OPcode = 6'b111011;
 		
-		#120;
+		#10;
 		OPcode = 6'd19;
 		
-		#120;
+		#10;
 		OPcode = 6'd32;
 		
-		#120;
+		#10;
 		OPcode = 6'd33;
 		
-		#120;
+		#10;
 		OPcode = 6'd0;
 		
         

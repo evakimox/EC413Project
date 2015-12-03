@@ -1,6 +1,7 @@
 verilog work "twomux5.v"
 verilog work "twomux32.v"
 verilog work "threemux32.v"
+verilog work "onestatecontroller.v"
 verilog work "nbit_register_file.v"
 verilog work "InstructionDecoder.v"
 verilog work "IMem.v"

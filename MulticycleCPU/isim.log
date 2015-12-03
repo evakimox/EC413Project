@@ -1,11 +1,13 @@
 ISim log file
-Running: C:\Users\Jingning Zhang\Documents\GitHub\EC413Project\MulticycleCPU\Data_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Data_tb_isim_beh.wdb 
+Running: C:\Users\Jingning Zhang\Documents\GitHub\EC413Project\MulticycleCPU\FINALCPU_TB_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/FINALCPU_TB_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
@@ -17,7 +19,9 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -26,7 +30,9 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -35,7 +41,9 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -44,7 +52,9 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -53,7 +63,9 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
@@ -62,7 +74,20 @@ WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
 WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
 This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
 WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
+# run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+ISim P.20131013 (signature 0x7708f090)
+WARNING: A WEBPACK license was found.
+WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
+WARNING: ISim will run in Lite mode. Please refer to the ISim documentation for more information on the differences between the Lite and the Full version.
+This is a Lite version of ISim.
+WARNING:  For instance uut/selectinstruction/, width 1 of formal port Sel is not equal to width 32 of actual constant.
+WARNING:  For instance uut/ID/, width 1 of formal port IRWrite is not equal to width 32 of actual constant.
+WARNING: File "C:/Users/Jingning Zhang/Documents/GitHub/EC413Project/MulticycleCPU/Datapath.v" Line 67.  For instance uut/ctrl/, width 4 of formal port ALUOP is not equal to width 1 of actual signal ALUOP.
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
